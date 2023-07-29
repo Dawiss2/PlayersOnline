@@ -3,7 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>PlayersOnline</AssemblyName>
     <Description>Simple plugin that adds command to display current players online amount.</Description>
-    <Version>1.0.2</Version>
+    <Version>1.0.4</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>PlayersOnline</RootNamespace>

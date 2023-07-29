@@ -45,7 +45,7 @@ public static class Command
     }
     public static void SendPlayersCount(ICommandContext ctx)
     {
-        NativeArray<Entity> players = VWorld.Server.EntityManager.CreateEntityQuery(ComponentType.ReadOnly<User>()).ToEntityArray(Allocator.Temp);
+        NativeArray<Entity> players = VWorld.Server.EntityManager.CreateEntityQuery(ComponentType.ReadOnly<UserEntityNetworkState>()).ToEntityArray(Allocator.Temp);
         ctx.Reply("There are " + players.Length.ToString() + "/" + PlayersOnline.Plugin.PlayerSlots.Value + " players online!");
     }
 }
