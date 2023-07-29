@@ -2,11 +2,8 @@
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 using VampireCommandFramework;
-using ProjectM.Network;
-using Unity.Entities;
-using Bloodstone.API;
-using Unity.Collections;
 using BepInEx.Configuration;
+
 
 namespace PlayersOnline;
 
@@ -17,8 +14,8 @@ namespace PlayersOnline;
 public class Plugin : BasePlugin
 {
     Harmony _harmony;
-    private static EntityManager entityManager = VWorld.Server.EntityManager;
     public static ConfigEntry<int> PlayerSlots;
+    public static ConfigEntry<int> Cooldown;
 
     public override void Load()
     {
@@ -36,6 +33,7 @@ public class Plugin : BasePlugin
     public void ConfigInit()
     {
         PlayerSlots = Config.Bind("PlayerSlots", "slots", 0);
+        Cooldown = Config.Bind("Cooldown", "Seconds", 60);
     }
 
     public override bool Unload()
@@ -43,12 +41,5 @@ public class Plugin : BasePlugin
         CommandRegistry.UnregisterAssembly();
         _harmony?.UnpatchSelf();
         return true;
-    }
-
-    [Command("online", description: "Check how many players are online", adminOnly: false)]
-    public void OnlineCommand(ICommandContext ctx)
-    {
-        NativeArray<Entity> players = entityManager.CreateEntityQuery(ComponentType.ReadOnly<User>()).ToEntityArray(Allocator.Temp);
-        ctx.Reply("There are " + players.Length.ToString() + "/" + PlayerSlots.Value + " players online!");
     }
 }

@@ -2,8 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>PlayersOnline</AssemblyName>
-    <Description>Created with VRising.ModTemplate, you should edit this.</Description>
-    <Version>1.0</Version>
+    <Description>Simple plugin that adds command to display current players online amount.</Description>
+    <Version>1.0.2</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>PlayersOnline</RootNamespace>
